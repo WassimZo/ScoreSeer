@@ -1,0 +1,29 @@
+import React from "react";
+import ScoreSeerLogo from "../../assets/eye-solid.svg";
+import MoonIcon from "../../assets/moon-solid.svg";
+import { Link } from "react-router-dom";
+import DaysBar from "./DaysBar";
+
+export default function Navbar() {
+  return (
+    <>
+      <div className="w-full bg-white h-32 relative top-0 left-0 flex justify-between items-center px-3 ">
+        <div>
+          <Link to="/" className="w-full h-full flex flex-row items-center">
+            <img src={ScoreSeerLogo} alt="logo" className="w-6 h-6" />
+            <h1 className="text-md font-bold ml-1">ScoreSeer</h1>
+          </Link>
+        </div>
+        <div className="flex items-center gap-1">
+          <button className="flex items-center justify-center p-2">
+            <img src={MoonIcon} alt="moon icon" className="w-4 h-4" />
+          </button>
+          <Link to="/login" className="p-2">
+            <h1 className="font-semibold">login</h1>
+          </Link>
+        </div>
+      </div>
+      <DaysBar />
+    </>
+  );
+}
