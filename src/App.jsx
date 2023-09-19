@@ -8,10 +8,9 @@ import OnboardingModal from "./components/modals/OnboardingModal";
 
 function App() {
   return (
-    <div className="bg-gray-300 min-h-screen">
+    <div className="bg-gray-300 min-h-screen relative">
       <BrowserRouter>
         <Navbar />
-        <Footer />
         <Routes>
           <Route path="/login" element={<LoginModal />} />
           <Route path="/onboarding" element={<OnboardingModal />} />
@@ -19,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/leaderboard" />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

@@ -4,7 +4,7 @@ export default function RegisterModal() {
   return (
     <BaseModal>
       <div className="h-full w-full px-4">
-        <h1 className="mt-32 text-3xl font-bold mb-10">Register</h1>
+        <h1 className="mt-20 text-3xl font-bold mb-10">Register</h1>
         <form action="" className="w-full flex flex-col gap-10">
           <div className="flex flex-col">
             <label htmlFor="email" className="text-sm font-medium mb-5">

@@ -1,24 +1,34 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { getLeagueById, getTeamById } from "../../lib/supabaseActions";
 
 export default function MatchCard({ match }) {
+  const [league, setLeague] = useState();
+  const [homeTeam, setHomeTeam] = useState();
+  const [awayTeam, setAwayTeam] = useState();
+
+  useEffect(() => {
+    async function fetchData() {
+      setLeague(await getLeagueById(match.league));
+      setHomeTeam(await getTeamById(match.homeTeam));
+      setAwayTeam(await getTeamById(match.awayTeam));
+    }
+    fetchData();
+  }, []);
+
   return (
     <div className="w-full bg-white flex flex-col py-4 px-6 rounded-2xl shadow-xl">
-      <img
-        src={match.league.logo}
-        alt="league-logo"
-        className="w-10 h-10 mx-auto"
-      />
+      <img src={league?.logo} alt="league-logo" className="w-10 h-10 mx-auto" />
       <div className="w-full flex justify-stretch mt-2">
         <div className="flex flex-col gap-4 items-center w-full">
           <div className="rounded-full bg-gray-400 p-2 w-fit">
             <img
-              src={match.homeTeam.logo}
+              src={homeTeam?.logo}
               alt="home team logo"
               className="h-14 w-14"
             />
           </div>
           <span className="font-semibold text-sm text-center">
-            {match.homeTeam.name}
+            {homeTeam?.name}
           </span>
         </div>
         <div className="flex items-center justify-center w-full">
@@ -29,13 +39,13 @@ export default function MatchCard({ match }) {
         <div className="flex flex-col gap-4 items-center w-full">
           <div className="rounded-full bg-gray-400 p-2 w-fit">
             <img
-              src={match.awayTeam.logo}
+              src={awayTeam?.logo}
               alt="home team logo"
               className="h-14 w-14"
             />
           </div>
           <span className="font-semibold text-sm text-center">
-            {match.awayTeam.name}
+            {awayTeam?.name}
           </span>
         </div>
       </div>
