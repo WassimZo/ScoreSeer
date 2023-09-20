@@ -9,7 +9,7 @@ export default function LoginModal() {
         <form action="" className="w-full flex flex-col gap-4">
           <h1 className="mt-20 text-3xl font-bold mb-10">Login</h1>
           <div className="flex flex-col">
-            <label htmlFor="username" className="text-sm font-medium mb-5">
+            <label htmlFor="username" className="text-sm font-medium mb-4">
               E-mail address :{" "}
             </label>
             <input
@@ -19,7 +19,7 @@ export default function LoginModal() {
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="password" className="text-sm font-medium mb-5">
+            <label htmlFor="password" className="text-sm font-medium mb-4">
               Password :{" "}
             </label>
             <input

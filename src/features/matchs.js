@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createClient } from "@supabase/supabase-js";
+import { getTodayFormattedDate } from "../lib/supabaseActions";
 
 const supabaseUrl = "https://odctynkvqgnjtqeubaym.supabase.co";
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
@@ -22,36 +23,20 @@ export const matchs = createSlice({
 export function getAllMatchs(action) {
   return function (dispatch, getState) {
     const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-    const formattedDate = `${year}-${month}-${day}`;
+    const lastDay = new Date();
+
+    lastDay.setDate(lastDay.getDate() + 7);
+    const formattedToday = getTodayFormattedDate();
+    const formattedLastday = `${lastDay.getFullYear()}-${String(
+      lastDay.getMonth() + 1
+    ).padStart(2, "0")}-${String(lastDay.getDate()).padStart(2, "0")}`;
+
     supabase
       .from("Match")
       .select("*")
-      .eq("date", formattedDate)
+      .gte("date", formattedToday)
+      .lte("date", formattedLastday)
       .then((response) => dispatch(addMatchs(response.data)));
-  };
-}
-
-export function getMatchsByDate(date) {
-  return function (dispatch, getState) {
-    supabase
-      .from("Match")
-      .select("*")
-      .eq("date", date)
-      .then((response) => dispatch(addMatchs(response.data)));
-  };
-}
-
-export function filterByLeague(leagueId) {
-  return function (dispatch, getState) {
-    const matchState = getState();
-    const filteredMatchs = matchState.matchs.matchs.map((match) =>
-      console.log(match)
-    );
-    console.log(filteredMatchs);
-    dispatch(addMatchs(filteredMatchs));
   };
 }
 

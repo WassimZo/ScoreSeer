@@ -13,3 +13,11 @@ export async function getTeamById(id) {
   const team = await supabase.from("Team").select("*").eq("id", id);
   return team.data[0];
 }
+
+export function getTodayFormattedDate() {
+  const today = new Date();
+  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}-${String(today.getDate()).padStart(2, "0")}`;
+}
