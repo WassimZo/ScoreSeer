@@ -3,8 +3,9 @@ import ScoreSeerLogo from "../../assets/eye-solid.svg";
 import MoonIcon from "../../assets/moon-solid.svg";
 import { Link } from "react-router-dom";
 import DaysBar from "./DaysBar";
+import { logout } from "../../lib/supabaseActions";
 
-export default function Navbar() {
+export default function Navbar({ session }) {
   return (
     <>
       <div className="w-full bg-white h-32 relative top-0 left-0 flex justify-between items-center px-3 ">
@@ -18,9 +19,16 @@ export default function Navbar() {
           <button className="flex items-center justify-center p-2">
             <img src={MoonIcon} alt="moon icon" className="w-4 h-4" />
           </button>
-          <Link to="/login" className="p-2">
-            <h1 className="font-semibold">login</h1>
-          </Link>
+
+          {session ? (
+            <button to="/logout" className="p-2" onClick={(e) => logout()}>
+              <h1 className="font-semibold ">logout</h1>
+            </button>
+          ) : (
+            <Link to="/login" className="p-2">
+              <h1 className="font-semibold ">login</h1>
+            </Link>
+          )}
         </div>
       </div>
       <DaysBar />

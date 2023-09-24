@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createClient } from "@supabase/supabase-js";
 import { getTodayFormattedDate } from "../lib/supabaseActions";
-
-const supabaseUrl = "https://odctynkvqgnjtqeubaym.supabase.co";
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { supabase } from "../lib/supabaseActions";
 
 const initialState = {
   matchs: [],

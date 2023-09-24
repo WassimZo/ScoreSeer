@@ -5,22 +5,37 @@ import Home from "./components/home/Home";
 import LoginModal from "./components/modals/LoginModal";
 import RegisterModal from "./components/modals/RegisterModal";
 import OnboardingModal from "./components/modals/OnboardingModal";
-import { useDispatch } from "react-redux";
-import { getAllMatchs } from "./features/matchs";
+import Leaderboard from "./components/leaderboard/Leaderboard";
+import { supabase } from "./lib/supabaseActions";
+import { useEffect, useState } from "react";
 
 function App() {
-  const dispatch = useDispatch();
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <div className="bg-gray-300 min-h-screen relative">
       <BrowserRouter>
-        <Navbar />
+        <Navbar session={session} />
         <Routes>
           <Route path="/login" element={<LoginModal />} />
           <Route path="/onboarding" element={<OnboardingModal />} />
           <Route path="/register" element={<RegisterModal />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/leaderboard" />
+          <Route path="/" element={<Home session={session} />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
         <Footer />
       </BrowserRouter>

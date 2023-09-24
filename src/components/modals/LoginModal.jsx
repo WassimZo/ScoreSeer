@@ -1,20 +1,57 @@
 import BaseModal from "./baseModal";
 import facebookIcon from "../../assets/facebook.svg";
 import googleIcon from "../../assets/google.svg";
+import { useRef, useState } from "react";
+import { supabase } from "../../lib/supabaseActions";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginModal() {
+  const navigate = useNavigate();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const [validation, setValidation] = useState(null);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    supabase.auth
+      .signInWithPassword({
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      })
+      .then((response) => {
+        if (response.error) {
+          throw new Error("Auth error");
+        }
+        navigate("/onboarding");
+      })
+      .catch((err) => {
+        passwordRef.current.value = "";
+        setValidation("Password or email error");
+      });
+  };
+
+  const handleProviders = async (provider) => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: provider,
+    });
+  };
+
   return (
     <BaseModal>
       <div className="h-full w-full px-4 flex flex-col justify-between">
-        <form action="" className="w-full flex flex-col gap-4">
+        <form
+          onSubmit={(e) => handleLogin(e)}
+          className="w-full flex flex-col gap-4"
+        >
           <h1 className="mt-20 text-3xl font-bold mb-10">Login</h1>
           <div className="flex flex-col">
-            <label htmlFor="username" className="text-sm font-medium mb-4">
+            <label htmlFor="email" className="text-sm font-medium mb-4">
               E-mail address :{" "}
             </label>
             <input
-              type="text"
-              name="username"
+              type="email"
+              name="email"
+              ref={emailRef}
               className="bg-gray-300 rounded-xl pl-4 py-4 text-lg text-black"
             />
           </div>
@@ -25,9 +62,15 @@ export default function LoginModal() {
             <input
               type="password"
               name="password"
+              ref={passwordRef}
               className="bg-gray-300 rounded-xl pl-4 py-4 text-lg text-black"
             />
           </div>
+          {validation && (
+            <span className="text-sm font-medium text-red-400">
+              {validation}
+            </span>
+          )}
           <span className="font-extralight text-black/50 hover:text-black text-sm">
             <a href="/register">
               <b>Reset your password.</b>
@@ -40,11 +83,17 @@ export default function LoginModal() {
           />
         </form>
         <section className="w-full flex flex-col gap-6 items-center px-10">
-          <button className="bg-slate-100 w-full py-3 px-4 font-semibold text-black/75 rounded-xl text-lg flex justify-between shadow-xl">
+          <button
+            className="bg-slate-100 w-full py-3 px-4 font-semibold text-black/75 rounded-xl text-lg flex justify-between shadow-xl"
+            onClick={(e) => handleProviders("google")}
+          >
             <span>Login with Google</span>
             <img src={googleIcon} alt="facebook-icon" className="w-7 h-7" />
           </button>
-          <button className="bg-blue-500 w-full py-3 px-4 font-semibold text-white rounded-xl text-lg flex justify-between shadow-xl">
+          <button
+            className="bg-blue-500 w-full py-3 px-4 font-semibold text-white rounded-xl text-lg flex justify-between shadow-xl"
+            onClick={(e) => handleProviders("facebook")}
+          >
             <span>Login with Facebook</span>
             <img src={facebookIcon} alt="facebook-icon" className="w-7 h-7" />
           </button>

@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function DaysBar() {
   let date = new Date();
   const days = ["Today", "Tomorrow", "J+2", "J+3", "J+4", "J+5", "J+6", "J+7"];
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramsDate = searchParams.get("date");
 
   return (
     <div className="w-full gap-5 flex justify-between bg-white">
@@ -20,7 +22,13 @@ export default function DaysBar() {
               <Link
                 to={`/?date=${formatedDate}`}
                 key={day}
-                className="text-md font-bold px-8 py-3 whitespace-nowrap"
+                className={`text-md font-bold px-8 py-3 whitespace-nowrap ${
+                  paramsDate
+                    ? paramsDate === formatedDate
+                      ? "text-blue-500 border-b-2 border-blue-500"
+                      : ""
+                    : ""
+                }`}
               >
                 {day}
               </Link>
@@ -30,7 +38,9 @@ export default function DaysBar() {
               <Link
                 to="/"
                 key={day}
-                className="text-md font-bold px-8 py-3 whitespace-nowrap"
+                className={`text-md font-bold px-8 py-3 whitespace-nowrap ${
+                  !paramsDate ? "text-blue-500 border-b-2 border-blue-500" : ""
+                }`}
               >
                 {day}
               </Link>

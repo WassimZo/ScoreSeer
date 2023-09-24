@@ -8,6 +8,7 @@ export default function SelectLeague({ handleLeague, leagueId }) {
   const [openMenu, setOpenMenu] = useState(false);
   const leagueState = useSelector((state) => state.leagues);
   const leagues = leagueState.leagues;
+  const currentLeague = leagues.find((league) => league.id == leagueId);
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
@@ -21,8 +22,6 @@ export default function SelectLeague({ handleLeague, leagueId }) {
     handleLeague(id);
     toggleMenu();
   };
-
-  const currentLeague = leagues.find((league) => league.id == leagueId);
 
   return (
     <div className="w-full relative mt-4">
