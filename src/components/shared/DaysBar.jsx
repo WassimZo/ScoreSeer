@@ -8,7 +8,7 @@ export default function DaysBar() {
   const paramsDate = searchParams.get("date");
 
   return (
-    <div className="w-full gap-5 flex justify-between bg-white">
+    <div className="w-full gap-5 flex justify-between bg-white dark:bg-slate-700 dark:text-slate-50">
       <ul className="flex overflow-auto">
         {days.map((day) => {
           if (day != "Today") {
@@ -25,7 +25,7 @@ export default function DaysBar() {
                 className={`text-md font-bold px-8 py-3 whitespace-nowrap ${
                   paramsDate
                     ? paramsDate === formatedDate
-                      ? "text-blue-500 border-b-2 border-blue-500"
+                      ? "text-blue-500 border-b-2 border-blue-500 dark:text-blue-300 dark:border-blue-300"
                       : ""
                     : ""
                 }`}
@@ -39,7 +39,9 @@ export default function DaysBar() {
                 to="/"
                 key={day}
                 className={`text-md font-bold px-8 py-3 whitespace-nowrap ${
-                  !paramsDate ? "text-blue-500 border-b-2 border-blue-500" : ""
+                  !paramsDate
+                    ? "text-blue-500 border-b-2 border-blue-500 dark:text-blue-300 dark:border-blue-300"
+                    : ""
                 }`}
               >
                 {day}

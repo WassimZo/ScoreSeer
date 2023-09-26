@@ -39,7 +39,7 @@ export default function RegisterModal() {
 
   return (
     <BaseModal>
-      <div className="h-full w-full px-4">
+      <div className="h-full w-full px-4 dark:text-slate-50">
         <h1 className="mt-20 text-3xl font-bold mb-10">Register</h1>
         <form
           onSubmit={(e) => handleRegister(e)}

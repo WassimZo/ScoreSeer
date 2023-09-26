@@ -34,7 +34,7 @@ export default function OnboardingModal() {
     } = await supabase.auth.getUser();
 
     supabase
-      .from("Points")
+      .from("points")
       .insert([
         {
           user_id: `${user.id}`,
@@ -52,7 +52,7 @@ export default function OnboardingModal() {
 
   return (
     <BaseModal>
-      <div className="h-full w-full px-4 flex flex-col">
+      <div className="h-full w-full px-4 flex flex-col dark:text-slate-50">
         <h1 className="mt-32 text-3xl font-bold mb-10">Onboarding</h1>
         <form
           onSubmit={(e) => handleUsername(e)}
@@ -66,7 +66,7 @@ export default function OnboardingModal() {
               ref={usernameRef}
               type="text"
               name="username"
-              className="bg-gray-300 rounded-xl pl-4 py-4 text-lg text-black"
+              className="bg-gray-300 rounded-xl pl-4 py-4 text-lg text-black dark:text-slate-50"
             />
           </div>
           {validation && (

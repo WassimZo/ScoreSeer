@@ -33,7 +33,7 @@ export default function Home({ session }) {
       if (response.data.user) {
         const user = response.data.user.id;
         supabase
-          .from("Points")
+          .from("points")
           .select("username")
           .eq("user_id", `${user}`)
           .then((response) => {
@@ -58,7 +58,7 @@ export default function Home({ session }) {
   };
 
   return (
-    <div className="w-full h-full flex flex-col px-4 relative">
+    <div className="w-full h-full flex flex-col px-4 relative sm:px-8  md:px-12">
       <SelectLeague handleLeague={handleSelectLeague} leagueId={league} />
       <section className="w-full flex flex-col gap-4 mt-10 mb-10">
         {matchs.matchs.length > 0 &&

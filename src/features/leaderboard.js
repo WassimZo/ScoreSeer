@@ -19,9 +19,9 @@ export const players = createSlice({
 export function getLeaderboard() {
   return function (dispatch, getState) {
     supabase
-      .from("Points")
+      .from("points")
       .select("*")
-      .order("Points", { ascending: false })
+      .order("score", { ascending: false })
       .then((response) => {
         dispatch(addPlayers(response.data));
       });

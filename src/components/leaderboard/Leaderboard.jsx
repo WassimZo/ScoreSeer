@@ -16,7 +16,7 @@ export default function Leaderboard() {
       <h1 className="text-white text-4xl font-bold mx-auto mb-8">
         Leaderboard
       </h1>
-      <div className="bg-white w-full flex flex-col rounded-2xl p-4">
+      <div className="bg-white w-full flex flex-col rounded-2xl p-4 dark:text-slate-50 dark:bg-slate-700">
         <ul>
           {players.length > 0 &&
             players.map((player, index) => (
@@ -28,7 +28,11 @@ export default function Leaderboard() {
                     : ""
                 }`}
               >
-                <span className={`${index + 1 == 1 ? "text-blue-500" : ""}`}>
+                <span
+                  className={`${
+                    index + 1 == 1 ? "text-blue-500 dark:text-blue-300" : ""
+                  }`}
+                >
                   {index + 1}{" "}
                 </span>
                 <span className="font-semibold w-full ml-4">

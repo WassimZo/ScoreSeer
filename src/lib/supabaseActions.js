@@ -30,6 +30,7 @@ export async function logout() {
   const { error } = await supabase.auth.signOut();
   store.dispatch(resetPronostics());
   redirect("/");
+  window.location.reload(false);
 }
 
 export async function insertPronostic(newProno) {

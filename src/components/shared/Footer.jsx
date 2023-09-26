@@ -5,7 +5,7 @@ import githubLogo from "../../assets/github.svg";
 
 export default function Footer() {
   return (
-    <div className="bg-white w-full h-20 absolute bottom-0 left-0 right-0">
+    <div className="bg-white w-full h-20 absolute bottom-0 left-0 right-0  dark:bg-slate-700">
       <div className="flex justify-between items-center w-24 mx-auto mt-4">
         <Link to="https://twitter.com/Wassimzo_12">
           <img src={xLogo} alt="x-logo" className="w-5 h-5" />
@@ -15,7 +15,7 @@ export default function Footer() {
         </Link>
       </div>
       <div className="w-full text-center mt-2">
-        <span className="text-xs font-extralight text-black/50">
+        <span className="text-xs font-extralight text-black/50  dark:text-slate-50">
           @ 2023 ScoreSeer. All rights reserved
         </span>
       </div>

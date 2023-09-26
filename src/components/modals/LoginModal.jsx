@@ -38,7 +38,7 @@ export default function LoginModal() {
 
   return (
     <BaseModal>
-      <div className="h-full w-full px-4 flex flex-col justify-between">
+      <div className="h-full w-full px-4 flex flex-col justify-between dark:text-slate-50">
         <form
           onSubmit={(e) => handleLogin(e)}
           className="w-full flex flex-col gap-4"
@@ -63,7 +63,7 @@ export default function LoginModal() {
               type="password"
               name="password"
               ref={passwordRef}
-              className="bg-gray-300 rounded-xl pl-4 py-4 text-lg text-black"
+              className="bg-gray-300 rounded-xl pl-4 py-4 text-lg text-black "
             />
           </div>
           {validation && (
@@ -71,7 +71,7 @@ export default function LoginModal() {
               {validation}
             </span>
           )}
-          <span className="font-extralight text-black/50 hover:text-black text-sm">
+          <span className="font-extralight text-black/50 dark:text-slate-50 hover:text-black dark:hover:text-white text-sm">
             <a href="/register">
               <b>Reset your password.</b>
             </a>

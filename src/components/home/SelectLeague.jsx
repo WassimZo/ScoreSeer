@@ -24,12 +24,12 @@ export default function SelectLeague({ handleLeague, leagueId }) {
   };
 
   return (
-    <div className="w-full relative mt-4">
+    <div className="w-full relative mt-4 dark:text-slate-50">
       <button
         onClick={toggleMenu}
-        className="bg-white px-4 py-4 rounded-lg shadow-md flex justify-between w-full font-semibold items-center"
+        className="bg-white px-4 py-4 rounded-lg shadow-md flex justify-between w-full font-semibold items-center dark:bg-slate-700"
       >
-        <span className="font-light text-black/50">
+        <span className="font-light text-black/50 dark:text-slate-50">
           {currentLeague ? currentLeague.name : "Select a league"}
         </span>
         <img
@@ -40,7 +40,7 @@ export default function SelectLeague({ handleLeague, leagueId }) {
       </button>
 
       {leagues.length > 0 && openMenu && (
-        <div className="absolute top-16 w-full bg-white  rounded-lg flex flex-col items-start gap-2 pl-4 py-6 z-50">
+        <div className="absolute top-16 w-full bg-white  rounded-lg flex flex-col items-start gap-2 pl-4 py-6 z-50 dark:bg-slate-700">
           {leagues.map((league) => {
             if (league !== currentLeague)
               return (

@@ -27,7 +27,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-gray-300 min-h-screen relative">
+    <div className="bg-gray-300 min-h-screen relative dark:bg-slate-900">
       <BrowserRouter>
         <Navbar session={session} />
         <Routes>
