@@ -111,11 +111,11 @@ export default function MatchCard({ match, pronostic, username }) {
             onSubmit={(e) => handleForm(e)}
             className="w-full flex flex-col items-center justify-center gap-4"
           >
-            <div className="w-full flex gap-2">
+            <div className="w-full flex gap-2 md:gap-6 lg:gap-16 xl:gap-24 lg:justify-between">
               <input
                 ref={homePronoRef}
                 type="text"
-                className="w-full border-2 rounded-lg  border-gray-300 pl-2 py-1 bg-gray-300 focus:bg-white font-bold text-sm"
+                className="w-full lg:w-[60%] xl:w-[40%]  border-2 rounded-lg  border-gray-300 pl-2 py-1 md:pl-4 md:py-2 lg:text-lg xl:text-xl bg-gray-300 focus:bg-white font-bold text-sm"
                 maxLength="2"
                 pattern="\d{1,2}"
                 required
@@ -123,7 +123,7 @@ export default function MatchCard({ match, pronostic, username }) {
               <input
                 ref={awayPronoRef}
                 type="text"
-                className="w-full border-2 rounded-lg  border-gray-300 pl-2 py-1 bg-gray-300 focus:bg-white font-bold text-sm"
+                className="w-full lg:w-[60%] xl:w-[40%] border-2 rounded-lg  border-gray-300 pl-2 py-1 md:pl-4 md:py-2  lg:text-lg xl:text-xl bg-gray-300 focus:bg-white font-bold text-sm"
                 maxLength="2"
                 pattern="\d{1,2}"
                 required
@@ -132,7 +132,7 @@ export default function MatchCard({ match, pronostic, username }) {
             <input
               type="submit"
               value="Predict"
-              className=" bg-black text-white text-sm px-4 py-2 rounded-xl font-semibold dark:bg-slate-900"
+              className=" bg-black text-white text-sm px-4 py-2 lg:px-6 lg:py-4 lg:text-lg xl:text-xl rounded-xl font-semibold dark:bg-slate-900"
             />
           </form>
         )}
