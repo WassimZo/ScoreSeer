@@ -48,7 +48,6 @@ export default function HomeLeaderboard({ username }) {
   const userRank = getUserRank();
   const indexes = getIndexes();
 
-  console.log(players);
 
   return (
     <div className="w-full h-full px-4 py-10 flex flex-col mb-32 md:px-10 lg:px-16 xl:px-20 2xl:px-24">
