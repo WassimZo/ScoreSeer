@@ -72,7 +72,7 @@ export default function LoginModal() {
             </span>
           )}
           <span className="font-extralight text-black/50 dark:text-slate-50 hover:text-black dark:hover:text-white text-sm">
-            <a href="/register">
+            <a href="/password-reset">
               <b>Reset your password.</b>
             </a>
           </span>

@@ -55,13 +55,13 @@ export default function MatchCard({ match, pronostic, username }) {
         alt="league-logo"
         className="w-10 h-10 mx-auto md:w-14 md:h-14"
       />
-      <div className="w-full flex justify-stretch mt-2">
+      <div className="w-full flex justify-stretch mt-2 sm:mt-4 lg:mt-6 xl:mt-10 2xl:mt-14">
         <div className="flex flex-col gap-4 items-center w-full">
           <div className="rounded-full bg-transparent p-2 w-fit">
             <img
               src={homeTeam?.logo}
               alt="home team logo"
-              className="h-14 w-14 md:h-20 md:w-20"
+              className="h-14 w-14 md:h-20 md:w-20 xl:w-32 xl:h-32"
             />
           </div>
           <span className="font-semibold text-sm text-center dark:text-slate-50 md:text-xl">
@@ -69,24 +69,26 @@ export default function MatchCard({ match, pronostic, username }) {
           </span>
         </div>
         {pronostic ? (
-          <div
-            className={`w-full flex items-center justify-center text-center font-bold text-xl px-4 dark:text-slate-50 md:text-3xl${
-              pronostic.status == 10
-                ? "text-green-700 dark:text-green-400"
-                : pronostic.status == 5
-                ? "text-orange-400 dark:text-orange-400"
-                : pronostic.status == -1
-                ? "text-red-500 dark:text-red-400"
-                : ""
-            }`}
-          >
-            <span className="w-full">{pronostic.homeProno}</span>
-            <span className="w-full">-</span>
-            <span className="w-full">{pronostic.awayProno}</span>
+          <div className="flex flex-col w-full justify-center gap-8">
+            <div
+              className={`w-full flex items-center justify-center text-center font-bold text-xl px-4 dark:text-slate-50 md:text-3xl ${
+                pronostic.status == 10
+                  ? "text-green-700 dark:text-green-400"
+                  : pronostic.status == 5
+                  ? "text-orange-400 dark:text-orange-400"
+                  : pronostic.status == -1
+                  ? "text-red-500 dark:text-red-400"
+                  : ""
+              }`}
+            >
+              <span className="w-full">{pronostic.homeProno}</span>
+              <span className="w-full">-</span>
+              <span className="w-full">{pronostic.awayProno}</span>
+            </div>
             <div
               className={`${
                 match.scoreHome && match.scoreAway
-                  ? "w-full flex items-center text-sm"
+                  ? "w-full flex items-center text-sm text-center xl:text-lg"
                   : "hidden"
               }`}
             >
@@ -98,7 +100,7 @@ export default function MatchCard({ match, pronostic, username }) {
         ) : !toggleForm ? (
           <div className="flex items-center justify-center w-full">
             <button
-              className="bg-black text-white text-sm font-bold rounded-2xl px-4 py-2 dark:bg-slate-900 md:px-8 md:py-4 md:text-lg"
+              className="bg-black text-white text-sm font-bold rounded-2xl px-4 py-2 dark:bg-slate-900 md:px-8 md:py-4 md:text-lg xl:px-12 xl:py-6 xl:text-xl"
               onClick={handleClick}
             >
               Predict
@@ -140,7 +142,7 @@ export default function MatchCard({ match, pronostic, username }) {
             <img
               src={awayTeam?.logo}
               alt="home team logo"
-              className="h-14 w-14 md:h-20 md:w-20"
+              className="h-14 w-14 md:h-20 md:w-20 xl:w-32 xl:h-32"
             />
           </div>
           <span className="font-semibold text-sm text-center dark:text-slate-50 md:text-xl">
@@ -148,7 +150,7 @@ export default function MatchCard({ match, pronostic, username }) {
           </span>
         </div>
       </div>
-      <div className="hidden md:visible md:flex md:text-gray-700 md:py-4 md:text-sm md:mt-4 dark:text-slate-50">
+      <div className="hidden md:visible md:flex md:text-gray-500 md:py-4 md:text-sm md:mt-4 dark:text-slate-50 xl:text-lg lg:mt-12">
         <div className="w-full flex items-center justify-center  gap-4">
           <img src={clockIcon} alt="date and time" className="w-4 h-4" />
           <span>{match.date}</span>

@@ -2,13 +2,18 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import chevronDown from "../../assets/chevron-down-solid.svg";
 import { getLeagues } from "../../features/leagues";
+import { useEffect } from "react";
 
-export default function SelectLeague({ handleLeague, leagueId }) {
+export default function SelectLeague({ handleLeague, leagueId, date, league }) {
   const dispatch = useDispatch();
   const [openMenu, setOpenMenu] = useState(false);
   const leagueState = useSelector((state) => state.leagues);
   const leagues = leagueState.leagues;
   const currentLeague = leagues.find((league) => league.id == leagueId);
+
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [date, league]);
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);

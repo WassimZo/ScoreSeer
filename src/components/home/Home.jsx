@@ -47,8 +47,6 @@ export default function Home({ session }) {
     });
   }, []);
 
-  if (session) console.log(pronos.pronostics);
-
   const handleSelectLeague = (id) => {
     if (searchParams.get("league")) {
       searchParams.delete("league");
@@ -58,8 +56,13 @@ export default function Home({ session }) {
   };
 
   return (
-    <div className="w-full h-full flex flex-col px-4 relative sm:px-8  md:px-12">
-      <SelectLeague handleLeague={handleSelectLeague} leagueId={league} />
+    <div className="w-full h-full flex flex-col px-4 relative sm:px-8  md:px-12 lg:px-12 xl:px-20 2xl:px-64">
+      <SelectLeague
+        handleLeague={handleSelectLeague}
+        leagueId={league}
+        date={date}
+        league={league}
+      />
       <section className="w-full flex flex-col gap-4 mt-10 mb-10">
         {matchs.matchs.length > 0 &&
           matchs.matchs.map((match) => {

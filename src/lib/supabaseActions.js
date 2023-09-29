@@ -26,11 +26,27 @@ export function getTodayFormattedDate() {
   )}-${String(today.getDate()).padStart(2, "0")}`;
 }
 
+export function getWeekFormattedDate() {
+  let result = ["Today", "Tomorrow"];
+  const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  for (let i = 2; i <= 7; i++) {
+    const date = new Date();
+    date.setDate(date.getDate() + i);
+    result.push(
+      `${week[date.getDay()]} ${String(date.getDate()).padStart(
+        2,
+        "0"
+      )} / ${String(date.getMonth() + 1).padStart(2, "0")}`
+    );
+  }
+  return result;
+}
+
 export async function logout() {
   const { error } = await supabase.auth.signOut();
   store.dispatch(resetPronostics());
   redirect("/");
-  window.location.reload(false);
+  window.location.reload();
 }
 
 export async function insertPronostic(newProno) {

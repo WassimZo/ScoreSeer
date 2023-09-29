@@ -8,10 +8,7 @@ export default function useDark() {
     const root = window.document.documentElement;
     root.classList.remove(colorTheme);
     root.classList.add(theme);
-
     localStorage.setItem("theme", theme);
-
-    console.log("done");
   }, [colorTheme, setTheme]);
 
   return [colorTheme, setTheme];

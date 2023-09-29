@@ -12,11 +12,11 @@ export default function Leaderboard() {
   }, []);
 
   return (
-    <div className="w-full h-full px-4 py-10 flex flex-col">
-      <h1 className="text-white text-4xl font-bold mx-auto mb-8">
+    <div className="w-full h-full px-4 py-10 flex flex-col md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+      <h1 className="text-slate-900 text-4xl font-bold mx-auto mb-8 dark:text-slate-50">
         Leaderboard
       </h1>
-      <div className="bg-white w-full flex flex-col rounded-2xl p-4 dark:text-slate-50 dark:bg-slate-700">
+      <div className="bg-white w-full flex flex-col rounded-2xl p-4 text-slate-900 dark:bg-slate-700 dark:text-slate-50">
         <ul>
           {players.length > 0 &&
             players.map((player, index) => (
@@ -38,7 +38,7 @@ export default function Leaderboard() {
                 <span className="font-semibold w-full ml-4">
                   {player.username}
                 </span>
-                <span>{player.Points}</span>
+                <span>{player.score}</span>
               </div>
             ))}
         </ul>

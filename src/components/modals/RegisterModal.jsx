@@ -29,6 +29,9 @@ export default function RegisterModal() {
         })
         .catch((err) => {
           setValidation("E-mail already used");
+          emailRef.current.value = "";
+          passwordRef.current.value = "";
+          passwordConfirmationRef.current.value = "";
         });
     } else {
       passwordRef.current.value = "";

@@ -8,6 +8,8 @@ import OnboardingModal from "./components/modals/OnboardingModal";
 import Leaderboard from "./components/leaderboard/Leaderboard";
 import { supabase } from "./lib/supabaseActions";
 import { useEffect, useState } from "react";
+import PasswordResetModal from "./components/modals/PasswordResetModal";
+import UpdatePasswordModal from "./components/modals/UpdatePasswordModal";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -36,6 +38,8 @@ function App() {
           <Route path="/register" element={<RegisterModal />} />
           <Route path="/" element={<Home session={session} />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/password-reset" element={<PasswordResetModal />} />
+          <Route path="/password-update" element={<UpdatePasswordModal />} />
         </Routes>
         <Footer />
       </BrowserRouter>

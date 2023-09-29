@@ -51,18 +51,18 @@ export default function HomeLeaderboard({ username }) {
   console.log(players);
 
   return (
-    <div className="w-full h-full px-4 py-10 flex flex-col mb-32">
+    <div className="w-full h-full px-4 py-10 flex flex-col mb-32 md:px-10 lg:px-16 xl:px-20 2xl:px-24">
       <h1 className="text-black text-4xl font-bold mx-auto mb-8 dark:text-slate-50">
         Leaderboard
       </h1>
-      <div className="bg-white w-full flex flex-col rounded-2xl p-4 dark:bg-slate-700 dark:text-slate-50">
+      <div className="bg-white w-full flex flex-col rounded-2xl p-4 xl:p-8 dark:bg-slate-700 dark:text-slate-50 md:text-lg lg:text-xl xl:text-2xl 2xl:text-xl">
         <ul>
           {indexes.length > 0 &&
             players.length > 0 &&
             indexes.map((index, i) => (
               <div
                 key={i}
-                className={`flex px-2 py-4 ${
+                className={`flex px-2 py-4 xl:py-8 xl:px-4 ${
                   i != indexes.length - 1
                     ? "border-b-2 border-gray-200 dark:border-slate-900"
                     : ""
@@ -75,7 +75,7 @@ export default function HomeLeaderboard({ username }) {
                 >
                   {index + 1}{" "}
                 </span>
-                <span className="font-semibold w-full ml-4">
+                <span className="font-semibold w-full ml-4 xl:ml-12">
                   {players[i].username}
                 </span>
                 <span>{players[i].score}</span>
