@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import ScoreSeerLogo from "../../assets/eye-solid.svg";
-import darkLogo from "../../assets/eye-dark.svg";
-import SunIcon from "../../assets/sun.svg";
-import MoonIcon from "../../assets/moon-solid.svg";
+import ScoreSeerLogo from "/src/assets/eye-solid.svg";
+import darkLogo from "/src/assets/eye-dark.svg";
+import SunIcon from "/src/assets/sun.svg";
+import MoonIcon from "/src/assets/moon-solid.svg";
 import { Link } from "react-router-dom";
 import DaysBar from "./DaysBar";
-import { logout } from "../../lib/supabaseActions";
-import useDark from "../../../hooks/useDark";
+import { logout } from "/src/lib/supabaseActions";
+import useDark from "/src/../hooks/useDark";
 
 export default function Navbar({ session }) {
   const [colorTheme, setTheme] = useDark();
