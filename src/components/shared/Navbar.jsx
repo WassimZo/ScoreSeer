@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ScoreSeerLogo from "/src/assets/eye-solid.svg";
 import darkLogo from "/src/assets/eye-dark.svg";
 import SunIcon from "/src/assets/sun.svg";
@@ -11,6 +11,10 @@ import useDark from "/src/../hooks/useDark";
 export default function Navbar({ session }) {
   const [colorTheme, setTheme] = useDark();
 
+  useEffect(() => {
+    setTheme("light");
+  }, []);
+
   const handleTheme = () => {
     setTheme(colorTheme);
   };
@@ -22,7 +26,7 @@ export default function Navbar({ session }) {
           <Link to="/" className="w-full h-full flex flex-row items-center">
             <img
               src={
-                colorTheme === "dark" || colorTheme === "undefined"
+                colorTheme === "dark" || colorTheme == undefined
                   ? ScoreSeerLogo
                   : darkLogo
               }
@@ -39,7 +43,7 @@ export default function Navbar({ session }) {
           >
             <img
               src={
-                colorTheme === "dark" || colorTheme === "undefined"
+                colorTheme === "dark" || colorTheme == undefined
                   ? MoonIcon
                   : SunIcon
               }
