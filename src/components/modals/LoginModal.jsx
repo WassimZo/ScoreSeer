@@ -1,4 +1,4 @@
-import BaseModal from "./baseModal";
+import BaseModal from "./BaseModal";
 import facebookIcon from "../../assets/facebook.svg";
 import googleIcon from "../../assets/google.svg";
 import { useRef, useState } from "react";

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import BaseModal from "./baseModal";
+import BaseModal from "./BaseModal";
 import { supabase } from "../../lib/supabaseActions";
 
 export default function PasswordResetModal() {

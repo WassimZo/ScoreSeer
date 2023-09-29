@@ -1,4 +1,4 @@
-import BaseModal from "./baseModal";
+import BaseModal from "./BaseModal";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "../../lib/supabaseActions";
 import { useNavigate } from "react-router-dom";
