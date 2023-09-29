@@ -21,7 +21,7 @@ export default function Navbar({ session }) {
         <div>
           <Link to="/" className="w-full h-full flex flex-row items-center">
             <img
-              src={colorTheme === "dark" ? ScoreSeerLogo : darkLogo}
+              src={colorTheme !== "dark" ? ScoreSeerLogo : darkLogo}
               alt="logo"
               className="w-6 h-6 sm:w-8 sm:h-8"
             />
@@ -34,7 +34,7 @@ export default function Navbar({ session }) {
             onClick={(e) => handleTheme(e)}
           >
             <img
-              src={colorTheme === "dark" ? MoonIcon : SunIcon}
+              src={colorTheme !== "dark" ? MoonIcon : SunIcon}
               alt="moon icon"
               className="w-4 h-4"
             />
